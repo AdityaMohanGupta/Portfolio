@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Airlinq eSIM Fleet Orchestrator | Aditya Mohan Gupta</title>
+
+    <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="./project_detail.css">
+</head>
+<body>
+
+  <main id="main">
+    <div class="detail__container">
+
+      <a href="../index.html#portfolio" class="detail__back"><i class='bx bx-arrow-back'></i> Back to Projects</a>
+
+      <div class="detail__banner">
+        <img src="../assets/img/Airlinq.jpg" alt="Airlinq eSIM Fleet Orchestrator dashboard">
+      </div>
+
+      <span class="detail__eyebrow">Backend &middot; Enterprise Project</span>
+      <h1 class="detail__title">Airlinq eSIM Fleet Orchestrator</h1>
+
+      <div class="detail__meta">
+        <span><i class='bx bx-briefcase-alt'></i> Consat Orahi</span>
+        <span><i class='bx bx-calendar-alt'></i> Nov 2025 &ndash; Present</span>
+        <span><i class='bx bx-user'></i> Associate Software Engineer</span>
+      </div>
+
+      <p class="detail__summary">
+        A cloud-native platform that lets a company remotely manage, connect, and monitor a fleet of
+        thousands of eSIM-powered IoT devices &mdash; activating them, switching carriers, or shutting
+        them off instantly instead of sending a technician to each one. My work centered on the
+        identity &amp; permissions layer, audit logging, and bulk device onboarding that keep the
+        platform secure and usable at enterprise scale.
+      </p>
+
+      <h2 class="detail__section-title">What I Built</h2>
+      <ul class="detail__list">
+        <li><i class='bx bx-check'></i> Built the multi-tenant identity and permissions system &mdash; sign-up invitations, roles, and org-level access control that keeps one company's devices completely invisible to another company sharing the platform.</li>
+        <li><i class='bx bx-check'></i> Built a full audit trail across two core services, capturing the before-and-after value of every change to users, organizations, devices, and rules &mdash; so "who changed this and when" is a single lookup, not a log hunt.</li>
+        <li><i class='bx bx-check'></i> Built the bulk-upload feature for devices and connectivity profiles, letting an admin import thousands of records from a spreadsheet in one go, with validation that catches duplicate or malformed rows.</li>
+        <li><i class='bx bx-check'></i> Built part of the device-management dashboard (data-usage display, dropdown cleanup) and wrote the auto-generated Swagger/OpenAPI docs other teams integrate against.</li>
+        <li><i class='bx bx-check'></i> Fixed a set of multi-tenant correctness bugs &mdash; admins unable to see org-wide "everyone" records, duplicate company names being allowed, and incorrect KPI dashboard counts.</li>
+      </ul>
+
+      <h2 class="detail__section-title">Tech Stack</h2>
+      <div class="detail__tags">
+        <span>Java 21</span>
+        <span>Spring Boot (WebFlux)</span>
+        <span>gRPC</span>
+        <span>Kafka</span>
+        <span>Redis</span>
+        <span>PostgreSQL</span>
+        <span>Keycloak</span>
+        <span>OAuth2</span>
+        <span>Swagger/OpenAPI</span>
+        <span>Docker</span>
+        <span>Kubernetes</span>
+      </div>
+
+      <div class="detail__note">
+        <i class='bx bx-lock-alt'></i> Airlinq is built as seven independent backend services (rule engine,
+        order orchestrator, retry scheduler, Thales device adapter, and more) &mdash; my work concentrated in
+        the identity/permissions and audit-log services above. This is a proprietary enterprise system built
+        at Consat Orahi &mdash; source code and live demo are confidential and not publicly available.
+      </div>
+
+      <div class="detail__actions">
+        <a href="../index.html#portfolio" class="detail__button detail__button--ghost"><i class='bx bx-left-arrow-alt'></i> All Projects</a>
+        <a href="./kai.html" class="detail__button">Next Project <i class='bx bx-right-arrow-alt'></i></a>
+      </div>
+
+    </div>
+  </main>
+
+</body>
+</html>

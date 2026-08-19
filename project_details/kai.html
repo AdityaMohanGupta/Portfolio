@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KAI — LLM Agent & MCP Server Framework | Aditya Mohan Gupta</title>
+
+    <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="./project_detail.css">
+</head>
+<body>
+
+  <main id="main">
+    <div class="detail__container">
+
+      <a href="../index.html#portfolio" class="detail__back"><i class='bx bx-arrow-back'></i> Back to Projects</a>
+
+      <div class="detail__banner">
+        <img src="../assets/img/Kai.jpg" alt="KAI AI Agents dashboard">
+      </div>
+
+      <span class="detail__eyebrow">GenAI &middot; Full-Stack &middot; Enterprise Project</span>
+      <h1 class="detail__title">KAI — LLM Agent &amp; MCP Server Framework</h1>
+
+      <div class="detail__meta">
+        <span><i class='bx bx-briefcase-alt'></i> Consat Orahi</span>
+        <span><i class='bx bx-calendar-alt'></i> Nov 2025 &ndash; Present</span>
+        <span><i class='bx bx-user'></i> Associate Software Engineer</span>
+      </div>
+
+      <p class="detail__summary">
+        An AI platform (internal name DDA, shipped externally as kAI) that lets non-technical employees
+        ask plain-English questions about company data and get instant answers and charts, build
+        no-code automation workflows, and query uploaded documents &mdash; with every customer's data
+        kept strictly isolated. My work centered on the identity &amp; permissions layer and the
+        framework that lets AI agents safely call real external tools.
+      </p>
+
+      <h2 class="detail__section-title">What I Built</h2>
+      <ul class="detail__list">
+        <li><i class='bx bx-check'></i> Built the identity and permissions system &mdash; tenant/subtenant hierarchy, roles, and a full audit trail of every user and team change &mdash; the single largest area of my contribution to the service.</li>
+        <li><i class='bx bx-check'></i> Built the majority of the MCP tool-calling bridge that lets AI agents securely call real external systems &mdash; Jira, a graph database, direct SQL &mdash; with the right user's credentials, plus specific tools like SQL execution and S3 file reading.</li>
+        <li><i class='bx bx-check'></i> Built an end-to-end AI regression-testing system (backend, orchestration, and the admin UI) that automatically replays a bank of real questions against the live pipeline to catch quality drift before a customer notices.</li>
+        <li><i class='bx bx-check'></i> Built part of the connectors screen where admins link external tools like Jira and Outlook via OAuth2, and fixed a production bug where a broken message on the internal message bus would retry forever instead of being discarded.</li>
+      </ul>
+
+      <h2 class="detail__section-title">Tech Stack</h2>
+      <div class="detail__tags">
+        <span>Python</span>
+        <span>FastAPI</span>
+        <span>FastMCP</span>
+        <span>AutoGen</span>
+        <span>Java</span>
+        <span>Spring Boot</span>
+        <span>React.js</span>
+        <span>Keycloak</span>
+        <span>OAuth2</span>
+        <span>PostgreSQL</span>
+        <span>NATS</span>
+        <span>Docker</span>
+        <span>Kubernetes</span>
+      </div>
+
+      <div class="detail__note">
+        <i class='bx bx-lock-alt'></i> KAI is built as a team of specialized AI agents (understand the
+        question, write the query, draw the chart, verify the answer) rather than one model doing
+        everything &mdash; each step is simpler to get right, test, and fix in isolation. This is a
+        proprietary enterprise system built at Consat Orahi &mdash; source code and live demo are
+        confidential and not publicly available.
+      </div>
+
+      <div class="detail__actions">
+        <a href="./airlinq.html" class="detail__button detail__button--ghost"><i class='bx bx-left-arrow-alt'></i> Previous Project</a>
+        <a href="./ticket_boleto.html" class="detail__button">Next Project <i class='bx bx-right-arrow-alt'></i></a>
+      </div>
+
+    </div>
+  </main>
+
+</body>
+</html>

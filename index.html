@@ -1,24 +1,39 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Aditya Mohan Gupta — Associate Software Engineer specializing in Java, Spring Boot, GenAI/LLM systems, and cloud-native backend engineering.">
 
-    <!-- ===== SWIPER CSS ===== -->
-    <link rel="stylesheet" href="assets/css/swiper-bundle.min.css">
-        
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://unpkg.com">
+
     <!-- ===== BOX ICONS ===== -->
     <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
 
     <!-- ===== CSS ===== -->
     <link rel="stylesheet" href="assets/css/styles.css">
-    <link rel="stylesheet" href="assets/css/popup.css">
 
-    <title>Aditya's Portfolio</title>
+    <title>Aditya Mohan Gupta | Associate Software Engineer</title>
 
 </head>
-<body>
+
+<body class="is-loading">
+
+    <!--===== PRELOADER =====-->
+    <div class="preloader" id="preloader">
+        <div class="preloader__inner">
+            <span class="preloader__mark">AMG</span>
+            <div class="preloader__bar"><span class="preloader__bar-fill" id="preloaderFill"></span></div>
+        </div>
+    </div>
+
+    <!--===== CURSOR GLOW =====-->
+    <div class="cursor-glow" id="cursorGlow" aria-hidden="true"></div>
 
     <!--===== SCROLL TOP =====-->
     <a href="#" class="scrolltop" id="scroll-top">
@@ -37,10 +52,12 @@
                 <ul class="nav__list">
                     <li class="nav__item"><a href="#home" class="nav__link active-link">Home</a></li>
                     <li class="nav__item"><a href="#about" class="nav__link">About</a></li>
+                    <li class="nav__item"><a href="#qualification" class="nav__link">Experience</a></li>
                     <li class="nav__item"><a href="#services" class="nav__link">Services</a></li>
-                    <li class="nav__item"><a href="#portfolio" class="nav__link">Portfolio</a></li>
+                    <li class="nav__item"><a href="#portfolio" class="nav__link">Projects</a></li>
                     <li class="nav__item"><a href="#contact" class="nav__link">Contact</a></li>
                 </ul>
+                <span class="nav__indicator" id="nav-indicator" aria-hidden="true"></span>
             </div>
 
             <div class="nav__toggle" id="nav-toggle">
@@ -48,7 +65,6 @@
             </div>
         </nav>
     </header>
-
 
 
 
@@ -61,21 +77,26 @@
             <div class="home__container bd-container bd-grid">
 
                 <div class="home__data">
-                    <span class="home__greeting">Hello my name is</span>
-                    <h1 class="home__name">Aditya Mohan Gupta</h1>
-                    <span class="home__profession">I'm a Web Developer</span>
-                    <a download="" href="assets/pdf/aditya_mohan_resume.pdf" class="button button-light home__button">Download CV</a>
+                    <span class="home__greeting">Hello, my name is</span>
+                    <h1 class="home__name text-shimmer">Aditya Mohan Gupta</h1>
+                    <span class="home__profession">I'm an Associate Software Engineer</span>
+                    <a href="assets/pdf/aditya_mohan_resume.pdf" target="_blank" rel="noopener"
+                        class="button button-light home__button magnetic">View Resume</a>
                 </div>
 
                 <div class="home__social">
-                    <a href="https://leetcode.com/Aditya_Mohan_Gupta02/" target= "_blank" class="home__social-icon"><i class='bx bx-code'></i></a>
-                    <a href="https://auth.geeksforgeeks.org/user/aditya203rcs" target= "_blank" class="home__social-icon"><i class='bx bx-laptop'></i></a>
-                    <a href="https://github.com/AdityaMohanGupta" target= "_blank" class="home__social-icon"><i class='bx bxl-github'></i></a>
-                    <a href="https://www.linkedin.com/in/aditya-mohan-gupta-768b28259/" target= "_blank" class="home__social-icon"><i class='bx bxl-linkedin-square'></i></a>
+                    <a href="https://leetcode.com/Aditya_Mohan_Gupta02/" target="_blank" class="home__social-icon"
+                        title="LeetCode"><i class='bx bx-code-curly'></i></a>
+                    <a href="https://codeforces.com/profile/Aditya_Mohan_Gupta" target="_blank"
+                        class="home__social-icon" title="Codeforces"><i class='bx bx-trophy'></i></a>
+                    <a href="https://github.com/AdityaMohanGupta" target="_blank" class="home__social-icon"
+                        title="GitHub"><i class='bx bxl-github'></i></a>
+                    <a href="https://www.linkedin.com/in/aditya-mohan-gupta-768b28259/" target="_blank"
+                        class="home__social-icon" title="LinkedIn"><i class='bx bxl-linkedin-square'></i></a>
                 </div>
 
-                <div class="home__img">
-                    <img src="assets/img/ll.png" alt="">
+                <div class="home__img" id="homeImg">
+                    <img src="assets/img/Adi-full2-nobg.png" alt="Aditya Mohan Gupta">
                 </div>
             </div>
         </section>
@@ -85,27 +106,32 @@
 
         <!--===== ABOUT =====-->
         <section class="about section bd-container" id="about">
-            <span class="section-subtitle">My History</span>
-            <h2 class="section-title">About me</h2>
+            <span class="section-subtitle reveal">My Introduction</span>
+            <h2 class="section-title reveal">About me</h2>
             <div class="about__container bd-grid">
-                <div class="about__data bd-grid">
-                    <p class="about__description"><span>Hello, I'm <br></span>Frontend Developer,
-                        I'm passionate about creating and developing web interfaces
-                        With good experience in web design and development.</p>
+                <div class="about__data bd-grid reveal reveal-left">
+                    <p class="about__description"><span>Hello, I'm Aditya <br></span>
+                        an Associate Software Engineer at Consat Orahi, building production-grade, cloud-native
+                        systems with Java, Spring Boot (WebFlux), Python, and Kafka — and GenAI-powered
+                        applications using RAG, LLM integration, and MCP server frameworks. I care about clean
+                        distributed-systems design and turning ideas into scalable, reliable software.
+                    </p>
                     <div>
-                        <span class="about_number">00</span>
-                        <span class="about__achievement">Years of Experience</span>
+                        <span class="about_number" data-count="10" data-suffix="">0</span>
+                        <span class="about__achievement">Months of Experience</span>
                     </div>
                     <div>
-                        <span class="about_number">4+</span>
-                        <span class="about__achievement">Projects Completed</span>
+                        <span class="about_number" data-count="3" data-suffix="">0</span>
+                        <span class="about__achievement">Projects Delivered</span>
                     </div>
                     <div>
-                        <span class="about_number">1+</span>
-                        <span class="about__achievement">Project Collabration</span>
+                        <span class="about_number" data-count="800" data-suffix="+">0+</span>
+                        <span class="about__achievement">Problems Solved</span>
                     </div>
                 </div>
-                <img src="assets/img/oo.jpg" alt="" class="about__img">
+                <div class="about__img-wrapper reveal reveal-right">
+                    <img src="assets/img/profile.png" alt="Aditya Mohan Gupta" class="about__img">
+                </div>
             </div>
         </section>
 
@@ -114,13 +140,13 @@
 
 
         <!--===== QUALIFICATION =====-->
-        <section class="qualification section bd-container">
-            <span class="section-subtitle">Experience & Education</span>
-            <h2 class="section-title">Qualification</h2>
+        <section class="qualification section bd-container" id="qualification">
+            <span class="section-subtitle reveal">Experience & Education</span>
+            <h2 class="section-title reveal">Qualification</h2>
 
             <div class="qualification__container bd-grid">
 
-                <div class="qualification__content bd-grid">
+                <div class="qualification__content bd-grid reveal tilt-soft">
                     <h2 class="qualification__title">
                         <i class='bx bx-briefcase-alt qualification__title-icon'></i>
                         Work Experience
@@ -128,46 +154,21 @@
 
                     <div class="bd-grid">
                         <div class="qualification__data">
-                            <h3 class="qualification__area">Landing Page</h3>
+                            <h3 class="qualification__area">Consat Orahi</h3>
 
+                            <span class="qualification__role">Associate Software Engineer</span>
                             <div class="qualification__box">
                                 <span class="qualification__work">
-                                    <i class='bx bx-briefcase-alt qualification__icon'></i>
-                                    Codsoft
-                                </span>
-                                <span class="qualification__work">
                                     <i class='bx bx-calendar-alt qualification__icon'></i>
-                                    June 2023 - July 2023
+                                    Jun 2026 - Present
                                 </span>
                             </div>
-                        </div>
 
-                        <div class="qualification__data">
-                            <h3 class="qualification__area">Portfolio</h3>
-
+                            <span class="qualification__role">Software Engineer Intern</span>
                             <div class="qualification__box">
                                 <span class="qualification__work">
-                                    <i class='bx bx-briefcase-alt qualification__icon'></i>
-                                    Codsoft
-                                </span>
-                                <span class="qualification__work">
                                     <i class='bx bx-calendar-alt qualification__icon'></i>
-                                    June 2023 - July 2023
-                                </span>
-                            </div>
-                        </div>
-
-                        <div class="qualification__data">
-                            <h3 class="qualification__area">Calculator</h3>
-
-                            <div class="qualification__box">
-                                <span class="qualification__work">
-                                    <i class='bx bx-briefcase-alt qualification__icon'></i>
-                                    Codsoft
-                                </span>
-                                <span class="qualification__work">
-                                    <i class='bx bx-calendar-alt qualification__icon'></i>
-                                    June 2023 - July 2023
+                                    Nov 2025 - May 2026
                                 </span>
                             </div>
                         </div>
@@ -176,7 +177,7 @@
 
                 </div>
 
-                <div class="qualification__content bd-grid">
+                <div class="qualification__content bd-grid reveal tilt-soft">
                     <h2 class="qualification__title">
                         <i class='bx bx-book-alt qualification__title-icon'></i>
                         Education
@@ -184,50 +185,59 @@
 
                     <div class="bd-grid">
                         <div class="qualification__data">
-                            <h3 class="qualification__area">Student</h3>
+                            <h3 class="qualification__area">Bachelor of Technology</h3>
+                            <span class="qualification__role">CPI: 8.31</span>
 
                             <div class="qualification__box">
                                 <span class="qualification__work">
                                     <i class='bx bx-book-alt qualification__icon'></i>
-                                    GLA University
+                                    GLA University, Mathura
                                 </span>
                                 <span class="qualification__work">
                                     <i class='bx bx-calendar-alt qualification__icon'></i>
-                                    Aug 2022 - Aug 2026
+                                    Aug 2022 - May 2026
                                 </span>
                             </div>
                         </div>
 
                         <div class="qualification__data">
-                            <h3 class="qualification__area">Front-End Development</h3>
+                            <h3 class="qualification__area">Secondary Education</h3>
+                            <span class="qualification__role">Grade: 81.6%</span>
 
                             <div class="qualification__box">
                                 <span class="qualification__work">
                                     <i class='bx bx-book-alt qualification__icon'></i>
-                                    GLA University
+                                    Pt. D.D.U. Sanatan Dharma Vidyalaya, Kanpur
                                 </span>
                                 <span class="qualification__work">
                                     <i class='bx bx-calendar-alt qualification__icon'></i>
-                                    June 2023
+                                    March 2022
                                 </span>
                             </div>
                         </div>
 
+                    </div>
+                </div>
+
+                <div class="qualification__content bd-grid reveal tilt-soft">
+                    <h2 class="qualification__title">
+                        <i class='bx bx-medal qualification__title-icon'></i>
+                        Certificates & Achievements
+                    </h2>
+
+                    <div class="bd-grid">
                         <div class="qualification__data">
-                            <h3 class="qualification__area">Java Development</h3>
-
-                            <div class="qualification__box">
+                            <div class="qualification__box qualification__box--list">
                                 <span class="qualification__work">
-                                    <i class='bx bx-book-alt qualification__icon'></i>
-                                    GLA University
+                                    <i class='bx bx-check-circle qualification__icon'></i>
+                                    LeetCode rating 1730 · Codeforces max rating 1168
                                 </span>
                                 <span class="qualification__work">
-                                    <i class='bx bx-calendar-alt qualification__icon'></i>
-                                    July 2023
+                                    <i class='bx bx-check-circle qualification__icon'></i>
+                                    800+ problems solved across coding platforms
                                 </span>
                             </div>
                         </div>
-
                     </div>
                 </div>
             </div>
@@ -238,48 +248,46 @@
 
 
         <!--===== SERVICES =====-->
-        <a name ="my_services"></a>
+        <a name="my_services"></a>
         <section class="services section bd-container" id="services">
-            <span class="section-subtitle">What I offer</span>
-            <h2 class="section-title">Services</h2>
+            <span class="section-subtitle reveal">What I offer</span>
+            <h2 class="section-title reveal">Services</h2>
 
             <div class="services__container bd-grid">
 
-                <div class="services__data">
-                    <i class='bx bx-laptop services__icon'></i>
-                    <h3 class="service__title">Frontend Development</h3>
-                    <p class="service__description">Service that I offer & work,
-                        with lot of experience in the work area.</p>
-                        <hr>
-                        <div class="content">
-                            In frontend I know languages like HTML5, CSS3, JavaScript, Bootstrap.
-                        </div>
-                        <hr>
+                <div class="services__data reveal tilt">
+                    <i class='bx bx-server services__icon'></i>
+                    <h3 class="service__title">Backend & Cloud-Native Development</h3>
+                    <p class="service__description">Designing and building reliable, scalable backend systems.</p>
+                    <hr>
+                    <div class="content">
+                        Java, Spring Boot (WebFlux), gRPC, Kafka, Redis, PostgreSQL, Docker & Kubernetes for
+                        event-driven microservices.
+                    </div>
+                    <hr>
                 </div>
 
-                <div class="services__data">
-                    <i class='bx bx-data services__icon'></i>
-                    <h3 class="service__title">Backend Development</h3>
-                    <p class="service__description">Service that I offer & work,
-                        with lot of experience in the work area.</p>
-                        <hr>
-                        <div class="content">
-                            For Backend Development I know NodeJS, MongoDB
-                        </div>
-                        <hr>
+                <div class="services__data reveal tilt">
+                    <i class='bx bx-brain services__icon'></i>
+                    <h3 class="service__title">GenAI & LLM Engineering</h3>
+                    <p class="service__description">Building intelligent, tool-using applications on top of LLMs.</p>
+                    <hr>
+                    <div class="content">
+                        RAG pipelines, MCP servers with FastMCP, prompt engineering, and vector databases.
+                    </div>
+                    <hr>
                 </div>
 
-                <div class="services__data">
-                    <i class='bx bx-plug services__icon'></i>
-                    <h3 class="service__title">Programming</h3>
-                    <p class="service__description">Service that I offer & work,
-                        with lot of experience in the work area.</p>
-                        <hr>
-                        <div class="content">
-                            In Programming I know languages like C , Python , Java , Javascript.
-                        </div>
-                        <hr>
-                    
+                <div class="services__data reveal tilt">
+                    <i class='bx bx-code-alt services__icon'></i>
+                    <h3 class="service__title">Full-Stack Development</h3>
+                    <p class="service__description">End-to-end web apps, from database to polished UI.</p>
+                    <hr>
+                    <div class="content">
+                        React.js, TypeScript, Node.js, Express.js, Java, Spring Boot, Python, FastAPI, MongoDB, PostgreSQL, REST APIs, HTML5, CSS3 & JavaScript.
+                    </div>
+                    <hr>
+
                 </div>
 
             </div>
@@ -290,17 +298,18 @@
 
         <!--===== PROJECT IN MIND =====-->
         <section class="project section bd-container">
-            <div class="project__container bd-grid">
+            <div class="project__container bd-grid reveal reveal-scale">
                 <div class="project__data">
                     <i class='bx bx-chat project__icon'></i>
 
                     <div>
-                        <h2 class="project__title">Project in mind</h2>
-                        <p class="project__description">Hire me to carry out the following projects.</p>
+                        <h2 class="project__title">Let's connect</h2>
+                        <p class="project__description">Open to collaboration, interesting problems, and good
+                            conversations about tech.</p>
                     </div>
 
                     <div>
-                        <a href="#contact" class="button button-white">Hire Me</a>
+                        <a href="#contact" class="button button-white magnetic">Get in Touch</a>
                     </div>
                 </div>
             </div>
@@ -310,101 +319,123 @@
 
 
 
-        <a name ="my_portfolio"></a>
-            <!--===== PORTFOLIO =====-->
-            <section class="portfolio section bd-container" id="portfolio">
-                <span class="section-subtitle">My recent works</span>
-                <h2 class="section-title">Portfolio</h2>
+        <a name="my_portfolio"></a>
+        <!--===== PORTFOLIO =====-->
+        <section class="portfolio section bd-container" id="portfolio">
+            <span class="section-subtitle reveal">My recent work</span>
+            <h2 class="section-title reveal">Projects</h2>
 
-                <div class="portfolio__nav">
-                    <span class="portfolio__item active-portfolio" data-filter="all">All</span>
-                    <span class="portfolio__item" data-filter=".frontend">Frontend</span>
+            <div class="portfolio__nav">
+                <span class="portfolio__item active-portfolio" data-filter="all">All</span>
+                <span class="portfolio__item" data-filter=".genai">GenAI</span>
+                <span class="portfolio__item" data-filter=".fullstack">Full-Stack</span>
+            </div>
+
+            <div class="portfolio__container bd-grid">
+
+                <div class="portfolio__content mix fullstack reveal tilt">
+                    <div class="portfolio__banner portfolio__banner--fullstack">
+                        <img src="assets/img/Airlinq.jpg" alt="Airlinq eSIM Fleet Orchestrator dashboard"
+                            loading="lazy">
+                    </div>
+                    <div class="portfolio__data">
+                        <span class="portfolio__subtitle">Full-Stack · Consat Orahi</span>
+                        <h2 class="portfolio__title">Airlinq eSIM Fleet Orchestrator</h2>
+                        <div class="portfolio__tags">
+                            <span>Java 21</span><span>Spring
+                                Boot</span><span>Kafka</span><span>gRPC</span><span>Kubernetes</span>
+                        </div>
+                        <a href="./project_details/airlinq.html" class="button button-link">View Details</a>
+                    </div>
                 </div>
 
-                <div class="portfolio__container bd-grid">
-
-                    <div class="portfolio__content mix frontend">
-                        <img src="assets/img/portfolio/1.png" alt="" class="portfolio__img">
-                        <div class="portfolio__data">
-                            <span class="portfolio__subtitle">Frontend</span>
-                            <h2 class="portfolio__title">Landing Page</h2>
-                            <a href="./project_details/landing_page.html" class="button button-link">View Details</a>
-                        </div>
+                <div class="portfolio__content mix genai fullstack reveal tilt">
+                    <div class="portfolio__banner portfolio__banner--genai">
+                        <img src="assets/img/Kai.jpg" alt="KAI AI Agents dashboard" loading="lazy">
                     </div>
-
-                    <div class="portfolio__content mix frontend">
-                        <img src="assets/img/portfolio/2.png" alt="" class="portfolio__img">
-                        <div class="portfolio__data">
-                            <span class="portfolio__subtitle">Frontend</span>
-                            <h2 class="portfolio__title">Calculator</h2>
-                            <a href="./project_details/calculator.html" class="button button-link">View Details</a>
+                    <div class="portfolio__data">
+                        <span class="portfolio__subtitle">GenAI · Full-Stack · Consat Orahi</span>
+                        <h2 class="portfolio__title">KAI — LLM Agent & MCP Server Framework</h2>
+                        <div class="portfolio__tags">
+                            <span>Python</span><span>FastMCP</span><span>FastAPI</span><span>React.js</span><span>Keycloak</span>
                         </div>
+                        <a href="./project_details/kai.html" class="button button-link">View Details</a>
                     </div>
-
-                    <div class="portfolio__content mix frontend">
-                        <img src="assets/img/portfolio/3.png" alt="" class="portfolio__img">
-                        <div class="portfolio__data">
-                            <span class="portfolio__subtitle">Frontend</span>
-                            <h2 class="portfolio__title">Personal Portfolio</h2>
-                            <a href="./project_details/portfolio.html" class="button button-link">View Details</a>
-                        </div>
-                    </div>
-
-                    
-
                 </div>
-            </section>
 
-
-
-
-
-            
-            <!--===== CONTACT =====-->
-            <section class="contact section bd-container" id="contact">
-                <span class="section-subtitle">For Projects</span>
-                <h2 class="section-title">Contact Me</h2>
-
-                <div class="contact__container bd-grid">
-
-                    <div class="contact__content bd-grid">
-                        <div class="contact__box">
-                            <i class='bx bxs-location-plus contact__icon' ></i>
-                            <h3 class="contact__title">Location</h3>
-                            <span class="contact__description">Kanpur, Uttar Pradesh, India</span>
-                        </div>
+                <div class="portfolio__content mix fullstack reveal tilt">
+                    <div class="portfolio__banner portfolio__banner--fullstack">
+                        <img src="assets/img/Ticket-Boleto.jpg"
+                            alt="Ticket Boleto homepage — real-time ticket booking for movies, concerts, and sports"
+                            loading="lazy">
                     </div>
-
-                    <div class="contact__content bd-grid">
-                        <div class="contact__box">
-                            <i class='bx bx-phone contact__icon' ></i>
-                            <h3 class="contact__title">Phone</h3>
-                            <span class="contact__description">+91-7080483643</span>
+                    <div class="portfolio__data">
+                        <span class="portfolio__subtitle">Full-Stack · Personal Project</span>
+                        <h2 class="portfolio__title">Ticket Boleto</h2>
+                        <div class="portfolio__tags">
+                            <span>React.js</span><span>Node.js</span><span>Express</span><span>MongoDB</span>
                         </div>
+                        <a href="./project_details/ticket_boleto.html" class="button button-link">View Details</a>
                     </div>
-
-                    <div class="contact__content bd-grid">
-                        <div class="contact__box">
-                            <i class='bx bx-envelope contact__icon' ></i>
-                            <h3 class="contact__title">Gmail</h3>
-                            <span class="contact__description">aditya2004mohan@gmail.com</span>
-                        </div>
-                    </div>
-
-                    <div class="contact__content bd-grid">
-                        <div class="contact__box">
-                            <i class='bx bx-chat contact__icon' ></i>
-                            <h3 class="contact__title">Chat</h3>
-                            <div>
-                                <a href="https://www.linkedin.com/in/aditya-mohan-gupta-768b28259/" target="_blank" class="contact__social"><i class='bx bxl-facebook-square'></i></a>
-                                <a href="https://www.instagram.com/aditya_mohan_gupta/" target="_blank" class="contact__social"><i class='bx bxl-instagram'></i></a>
-                                <a href="https://www.linkedin.com/in/aditya-mohan-gupta-768b28259/" target="_blank" class="contact__social"><i class='bx bxl-linkedin-square'></i></a>
-                            </div>
-                        </div>
-                    </div>
-
                 </div>
-            </section>
+
+
+
+            </div>
+        </section>
+
+
+
+
+
+        <!--===== CONTACT =====-->
+        <section class="contact section bd-container" id="contact">
+            <span class="section-subtitle reveal">For Projects</span>
+            <h2 class="section-title reveal">Contact Me</h2>
+
+            <div class="contact__container bd-grid">
+
+                <div class="contact__content bd-grid reveal">
+                    <div class="contact__box">
+                        <i class='bx bxs-location-plus contact__icon'></i>
+                        <h3 class="contact__title">Location</h3>
+                        <span class="contact__description">Gurugram, India</span>
+                    </div>
+                </div>
+
+                <div class="contact__content bd-grid reveal">
+                    <div class="contact__box">
+                        <i class='bx bx-phone contact__icon'></i>
+                        <h3 class="contact__title">Phone</h3>
+                        <span class="contact__description">+91-7080483643</span>
+                    </div>
+                </div>
+
+                <div class="contact__content bd-grid reveal">
+                    <div class="contact__box">
+                        <i class='bx bx-envelope contact__icon'></i>
+                        <h3 class="contact__title">Gmail</h3>
+                        <span class="contact__description">aditya2004mohan@gmail.com</span>
+                    </div>
+                </div>
+
+                <div class="contact__content bd-grid reveal">
+                    <div class="contact__box">
+                        <i class='bx bx-chat contact__icon'></i>
+                        <h3 class="contact__title">Chat</h3>
+                        <div>
+                            <a href="https://www.linkedin.com/in/aditya-mohan-gupta-768b28259/" target="_blank"
+                                class="contact__social"><i class='bx bxl-linkedin-square'></i></a>
+                            <a href="https://github.com/AdityaMohanGupta" target="_blank" class="contact__social"><i
+                                    class='bx bxl-github'></i></a>
+                            <a href="https://leetcode.com/Aditya_Mohan_Gupta02/" target="_blank"
+                                class="contact__social"><i class='bx bx-code-curly'></i></a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
 
     </main>
 
@@ -412,35 +443,36 @@
 
     <!--===== FOOTER =====-->
     <footer class="footer">
-        <div class="footer__container bd-container">
+        <div class="footer__container bd-container reveal">
             <h1 class="footer--title">Aditya Mohan Gupta</h1>
-            <p class="footer__description">Hello, I'm Aditya Mohan Gupta Gupta this is my personal website, consult me here.</p>
+            <p class="footer__description">Associate Software Engineer building cloud-native backend systems and GenAI
+                applications. Let's connect.</p>
 
             <div class="footer__social">
-                <a href="https://www.linkedin.com/in/aditya-mohan-gupta-768b28259/" target="_blank" class="footer__link"><i class="bx bxl-linkedin"></i></a>
-                <a href="https://github.com/AdityaMohanGupta" target="_blank" class="footer__link"><i class="bx bxl-github"></i></a>
-                <a href="https://www.instagram.com/aditya_mohan_gupta/" target="_blank" class="footer__link"><i class='bx bx-globe'></i></a>
+                <a href="https://www.linkedin.com/in/aditya-mohan-gupta-768b28259/" target="_blank"
+                    class="footer__link"><i class="bx bxl-linkedin"></i></a>
+                <a href="https://github.com/AdityaMohanGupta" target="_blank" class="footer__link"><i
+                        class="bx bxl-github"></i></a>
+                <a href="https://codeforces.com/profile/Aditya_Mohan_Gupta" target="_blank" class="footer__link"><i
+                        class='bx bx-trophy'></i></a>
             </div>
 
-            <p class="footer__copy">&#169; 2021 All rights reserved by @aditya_gupta.</p>
+            <p class="footer__copy">&#169; 2026 All rights reserved by Aditya Mohan Gupta.</p>
         </div>
     </footer>
 
 
-    
 
     <!-- ===== MIXITUP FILTER ===== -->
     <script src="assets/js/mixitup.min.js"></script>
-        
-    <!-- ===== SWIPER JS ===== -->
-    <script src="assets/js/swiper-bundle.min.js"></script>
-    
+
     <!-- ===== GSAP ===== -->
     <script src="assets/js/gsap.min.js"></script>
-    
+
     <!--===== MAIN JS =====-->
     <script src="assets/js/main.js"></script>
 
-    
+
 </body>
+
 </html>
